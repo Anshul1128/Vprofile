@@ -110,8 +110,9 @@ pipeline{
     post {
         always {
             // Send Slack notification
+            // echo 'Slack Notifications.'
             slackSend(
-                echo 'Slack Notifications.'
+                
                 color: 'good',  // Notification color (good, warning, danger)
                 channel: '#jenkinscicd',  // Slack channel
                 message: "Build ${currentBuild.fullDisplayName} has completed successfully. ID : ${env.JOB_NAME} ${env.BUILD_NUMBER}",
