@@ -4,6 +4,7 @@ pipeline{
         maven "MAVEN3"
         jdk "OracleJDK11"
     }
+    
     // environment {
     //     NEXUS_VERSION = "nexus3"
     //     NEXUS_PROTOCOL = "http"
@@ -115,22 +116,10 @@ pipeline{
                 
                 color: 'good',  // Notification color (good, warning, danger)
                 channel: '#jenkinscicd',  // Slack channel
-                message: "Build ${currentBuild.fullDisplayName} has completed successfully. ID : ${env.JOB_NAME} ${env.BUILD_NUMBER}",
+                message: "Build ${currentBuild.fullDisplayName} has completed successfully.",
                 teamDomain: 'vprofile-gwd9993',  // Slack team domain
                 tokenCredentialId: 'slacktoken'  // Credential ID for the Slack integration token
             )
         }
     }
-    // post {
-    //     always {
-    //         echo 'Slack Notifications.'
-    //         slackSend channel: '#jenkinscicd',
-    //             color: 'slackSend color: "#439FE0", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"',
-    //             message: 'slackSend "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"'
-    //             // teamDomain: 'vprofile-gwd9993',
-    //             // tokenCredentialId: 'slacktoken'
-    //             // color: COLOR_MAP[currentBuild.currentResult],
-    //             // message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
-    //     }
-    // }
 }
