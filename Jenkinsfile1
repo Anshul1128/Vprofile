@@ -7,7 +7,7 @@ pipeline{
     environment {
         registryCredential = 'ecr:ap-south-1:awscreds'
         appRegistry = "153162545403.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg"
-        vprofileRegistry = "153162545403.dkr.ecr.ap-south-1.amazonaws.com"
+        vprofileRegistry = "https://153162545403.dkr.ecr.ap-south-1.amazonaws.com"
     }
     // environment {
     //     NEXUS_VERSION = "nexus3"
