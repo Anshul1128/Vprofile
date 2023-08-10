@@ -11,15 +11,7 @@ pipeline{
         cluster = "vprofile"
         service = "vprofileappsvc"
     }
-    // environment {
-    //     NEXUS_VERSION = "nexus3"
-    //     NEXUS_PROTOCOL = "http"
-    //     NEXUS_URL = "65.0.45.116:8081"
-    //     NEXUS_REPOSITORY = "vprofile-repo"
-	//     NEXUS_REPOGRP_ID    = "vprofile-grp-repo"
-    //     NEXUS_CREDENTIAL_ID = "nexuslogin"
-    //     ARTVERSION = "${env.BUILD_ID}"
-    // }
+
     stages {
         stage('Fetch Code'){
             steps{
@@ -98,18 +90,18 @@ pipeline{
             }
         }
     }    
-    // post {
-    //     always {
-    //         // Send Slack notification
-    //         // echo 'Slack Notifications.'
-    //         slackSend(
+    post {
+        always {
+            // Send Slack notification
+            // echo 'Slack Notifications.'
+            slackSend(
                 
-    //             color: 'good',  // Notification color (good, warning, danger)
-    //             channel: '#jenkinscicd',  // Slack channel
-    //             message: "Build ${currentBuild.fullDisplayName} has completed successfully.",
-    //             teamDomain: 'vprofile-gwd9993',  // Slack team domain
-    //             tokenCredentialId: 'slacktoken'  // Credential ID for the Slack integration token
-    //         )
-    //     }
-    // }
+                color: 'good',  // Notification color (good, warning, danger)
+                channel: '#jenkinscicd',  // Slack channel
+                message: "Build ${currentBuild.fullDisplayName} has completed successfully.",
+                teamDomain: 'vprofile-gwd9993',  // Slack team domain
+                tokenCredentialId: 'slacktoken'  // Credential ID for the Slack integration token
+            )
+        }
+    }
 }
